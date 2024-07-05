@@ -68,7 +68,7 @@ const AddStory = () => {
                     <span>
                         {success}
                     </span>
-                    <Link to="/">Go home</Link>
+                    <Link to="/">Go to homepage</Link>
                 </div>}
 
                 <input
