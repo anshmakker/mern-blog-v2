@@ -1,11 +1,20 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-const connectDatabase =async  () => {
+const connectDatabase = async () => {
+    try {
+        const manualMongoUrl = "mongodb://localhost:27017"; // MongoDB server URL without database name
 
-    await mongoose.connect(process.env.MONGO_URI ,{useNewUrlParser : true})
+        // Specify database name in options object
+        const options = {
+            useNewUrlParser: true,
+            dbName: "mydatabase" // Replace 'mydatabase' with the name of your database
+        };
 
-    console.log("MongoDB Connection Successfully")
+        await mongoose.connect(manualMongoUrl, options);
+        console.log("MongoDB Connected Successfully");
+    } catch (error) {
+        console.error("Error connecting to MongoDB:", error.message);
+    }
+};
 
-}
-
-module.exports = connectDatabase
+module.exports = connectDatabase;
